@@ -1,0 +1,22 @@
+<style type="text/css">
+	.bangcursor {
+		cursor: none;
+		background-color: white;
+	}
+	.bangcursor:hover {
+		background-color: red;
+		-moz-transition    : all 0.5s ease-in-out; /* FF4+ */
+		-o-transition      : all 0.5s ease-in-out; /* Opera 10.5+ */
+		-webkit-transition : all 0.5s ease-in-out; /* Saf3.2+, Chrome */
+		-ms-transition     : all 0.5s ease-in-out; /* IE10? */
+		transition         : all 0.5s ease-in-out;
+	}
+</style>
+
+<p>.</p><p>.</p><p>.</p><p class="bangcursor">hover here - your cursor disapears</p>
+<script type="text/javascript" src="/ui/_js/libs/jquery.js"></script>
+<script type="text/javascript">
+	$(".bangcursor").mouseenter(function () {
+
+	})
+</script>

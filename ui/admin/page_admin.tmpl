@@ -1,0 +1,64 @@
+
+	<fieldset>
+		<select name="list" id="list" onchange="window.location = this.value;">
+			<option value="?ID=" {% if details['ID'] == "" %}selected="selected"{% endif %}>New Question</option>
+			{% for row in list %}
+			<option value="?ID={{ row['ID'] }}" {% if details['ID'] == row['ID'] %}selected="selected"{% endif %}>{{ row['question'] }}</option>
+			{% endfor %}
+		</select>
+		<a href="?do=reset" class="btn " type="button">Reset Answered</a>
+		<hr>
+		<form class="form-horizontal" action="/admin?ID={{ details['ID'] }}" method="post">
+		<div class="control-group">
+			<label class="control-label">Question</label>
+
+			<div class="controls">
+				<input class="span10" type="text" value="{{ details['question'] }}" id="question" name="question">
+				<button type="submit" class="btn btn-primary">Save</button>
+				{% if  details['ID'] %}
+				<a href="?do=delete_question&ID={{ details['ID'] }}" type="submit" class="btn btn-danger">delete</a>
+				{% endif %}
+			</div>
+		</div>
+
+		</form>
+		{% if details['ID'] %}
+		<form class="form-horizontal" action="/admin?ID={{ details['ID'] }}" style="margin: 0;" method="post">
+			<div class="control-group" style="margin-bottom: 5px;">
+				<label class="control-label">
+					Answers
+
+				</label>
+
+
+				<div class="controls">
+					<input type="checkbox" name="correct" id="" value="1">
+					<input class="span10" type="text" value="" placeholder="New Answer" name="answer">
+					<button type="submit" class="btn ">Save</button>
+				</div>
+
+
+			</div>
+		</form>
+		{% for row in details['answers'] %}
+		<form class="form-horizontal" action="/admin?ID={{ details['ID'] }}&aID={{ row['ID'] }}" style="margin: 0;" method="post">
+		<div class="control-group" style="margin-bottom: 5px;" >
+			<label class="control-label">
+
+
+			</label>
+
+
+			<div class="controls">
+				<input type="checkbox" name="correct" id="t-{{ row['ID'] }}" value="1" {% if row['correct'] =='1'%}checked="checked"{%endif%}>
+				<input class="span10" type="text" value="{{ row['answer'] }}" name="answer">
+				<button type="submit" class="btn ">Save</button>
+				<a href="?do=delete_answer&aID={{row['ID']}}&ID={{ details['ID'] }}" type="submit" class="btn btn-danger">delete</a>
+			</div>
+
+
+		</div>
+		</form>
+		{% endfor %}
+		{% endif %}
+	</fieldset>

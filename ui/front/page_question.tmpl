@@ -1,0 +1,73 @@
+<div id="pane">
+	{% if question['ID'] =='' %}
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Question</th>
+			<th class="c" style="width:70px;;">Result</th>
+		</tr>
+
+		</thead>
+		<tbody>
+		{% for row in result['records'] %}
+		<tr>
+			<td>
+				{{ row['question'] }}
+			</td>
+			<td class="c">
+				{% if row['status'] == "Wrong" %}
+				<img src="/ui/_images/icons/cross.png"> {% endif %} {% if row['status'] == "Correct" %}
+				<img src="/ui/_images/icons/accept.png"> {% endif %} {% if row['status'] == "un-answered" %}
+				<img src="/ui/_images/icons/question.png" {% endif %}
+
+			</td>
+		</tr>
+		{% endfor %}</tbody>
+
+	</table>
+	{% else %}
+	<form class="form-horizontal" action="/?q={{ question['ID'] }}" method="POST">
+		<fieldset>
+			<div class="control-group {{ question['status'] }}">
+
+
+				<div class="controls" style="margin-left: 20px; margin-right: 20px;">
+					<h2>{{ question['question'] }}</h2>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label"></label>
+
+				<div class="controls quizz-answers highlighthovered">
+					{% for row in answers %} <label class="radio">
+					{% if question['answered'] =='' %}
+					<input type="radio" value="{{ row['ID'] }}" id="option-{{ row['ID'] }}" name="answers"> {% else %} {% if question['answered'] == row['ID'] %} {% if row['correct']!='1' %}
+					<img src="/ui/_images/icons/cross.png" alt="N" style="margin-left: -20px;"> {% else %}
+					<img src="/ui/_images/icons/accept.png" alt="N" style="margin-left: -20px; width: 16px;"> {% endif %} {% else %} {% if row['ID'] == question['correct_answer']['ID'] %}
+					<img src="/ui/_images/icons/accept.png" alt="N" style="margin-left: -20px; width: 16px;"> {% endif %} {% endif %} {% endif %}
+
+					<span class="nr">{{ forloop.counter }}: </span>
+
+					{{ row['answer'] }}
+
+				</label> {% endfor %}
+				</div>
+			</div>
+
+
+			<div class="form-actions">
+				<div class="span2" style="margin-left: -140px;">
+					<h1>{{ result['counter']['answered']}}
+						<small>/ {{ result['counter']['total'] }}</small>
+					</h1>
+
+				</div>
+
+				{% if question['answered'] %} <a href="/" class="btn span4 btn-info" type="button">Next</a> {% else %}
+				<button class="btn  btn-primary span4" type="submit">Answer</button>
+				{% endif %}
+			</div>
+		</fieldset>
+
+	</form>
+	{% endif %}</div>

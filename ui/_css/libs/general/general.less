@@ -1,0 +1,307 @@
+table tr.headingrow {
+	border : 1px solid #e1e1e1;
+	th {
+		padding-top    : 0;
+		padding-bottom : 0;
+		color          : #999;
+
+		.linear-gradient(#f5f5f5, #eeeeee, 30%, 100%);
+	}
+}
+
+form.form-fill {
+	margin:0;
+	padding:0;
+	.form-header {
+		position: absolute;
+		top:0;
+		left:0;
+		right:0;
+	}
+	.form-body {
+		.fillblock();
+	}
+	.form-footer {
+		position: absolute;
+		bottom:0;
+		left:0;
+		right:0;
+	}
+	.form-actions {
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 5px 0 5px 0;
+	}
+}
+
+
+
+
+.highlighthovered {
+	&>a, &>label, &>li, &>div {
+		.transition(all 0.5s ease-in-out);
+	}
+	&:hover {
+		> a, > label, > li, > div {
+			.opacity(0.5);
+		}
+		> .donthighlighthovered {
+			.opacity(1);
+		}
+	}
+	&>a:hover, &>label:hover, &>li:hover, &>div:hover {
+		.opacity(1);
+	}
+}
+.clickable {
+	cursor: pointer;
+}
+
+table {
+	width : 100%;
+	td {
+		vertical-align : top;
+	}
+}
+
+form {
+	&.form-narrow, .form-narrow {
+		.controls {
+			margin-left : 120px;
+		}
+		.control-label {
+			width : 100px;
+		}
+	}
+	&.form-super-narrow, .form-super-narrow {
+		.controls {
+			margin-left : 80px;
+		}
+		.control-label {
+			width : 60px;
+		}
+	}
+
+}
+
+.btn {
+	&.l {
+		text-align : left;
+	}
+	&.r {
+		text-align : right;
+	}
+}
+
+
+.clearfix:before, .clearfix:after {
+	content : "";
+	display : table;
+}
+
+.clearfix:after {
+	clear : both;
+}
+
+.clearfix {
+	zoom   : 1;
+	margin : 0;
+}
+
+fieldset .clearfix {
+	margin-bottom : 18px;
+}
+
+.loadingmask {
+	background : rgba(250, 250, 250, 0.7) url(/ui/_images/loading-wide.gif) no-repeat center center;
+	position   : absolute;
+	top        : 0;
+	bottom     : 0;
+	left       : 0;
+	right      : 0;
+	display    : none;
+	z-index    : 500;
+}
+
+.loadingmask.round {
+	background : rgba(250, 250, 250, 0.7) url(/ui/_images/loading-small.gif) no-repeat center center;
+
+}
+
+.loadingmask.bar {
+	background : rgba(250, 250, 250, 0.7) url(/ui/_images/loading-wide.gif) no-repeat center center;
+
+}
+
+.c {
+	text-align : center;
+}
+
+.l {
+	text-align : left;
+}
+
+.r {
+	text-align : right;
+}
+
+.s {
+	font-size : 10px;
+}
+
+.g {
+	color : #bfbfbf;
+}
+
+.dg {
+	color : #8c8c8c;
+}
+
+.f8 {
+	font-size : 8px;
+}
+
+.f9 {
+	font-size : 9px;
+}
+
+.f10 {
+	font-size : 10px;
+}
+
+.f11 {
+	font-size : 11px;
+}
+
+.f12 {
+	font-size : 12px;
+}
+
+.f13 {
+	font-size : 13px;
+}
+
+.glow {
+	-webkit-box-shadow : 0 0 2px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow    : 0 0 2px rgba(0, 0, 0, 0.25);
+	box-shadow         : 0 0 2px rgba(0, 0, 0, 0.25);
+
+}
+
+#systemTimers-container {
+
+}
+
+#systemTimers td .small {
+	font-size : 8px;
+	color     : #999;
+}
+
+#systemTimers td {
+	border-bottom : 1px dotted #ccc;
+	font-size     : 10px;
+	padding       : 3px;
+
+}
+
+#systemTimers .heading {
+	background-color : #f1f1f1;
+	font-weight      : bold;
+}
+
+table tr.active {
+	background-color : #DEEBFF;
+}
+
+table tr.active td {
+	color : #444;
+}
+
+ul.bar {
+	padding    : 0;
+	margin     : 0;
+	list-style : none;
+}
+
+.btn {
+	text-align : center;
+	padding    : 5px 0 6px;
+}
+
+.scroll-pane:focus {
+	outline : 0;
+}
+
+#h5p-message>div {
+
+}
+
+.browser-block {
+	display : block;
+	width   : 100px;
+	margin  : 10px;
+	float   : left;
+
+	padding : 5px;
+
+}
+
+.browser-block .btn {
+	width      : 100px;
+	margin-top : 10px;
+}
+
+.browser-icon {
+	background     : url(/ui/_images/browser-icons-32.png) 0 0 no-repeat;
+
+	display        : block;
+	vertical-align : middle;
+	height         : 32px;
+	width          : 32px;
+	margin-left    : 34px;
+	margin-top     : 5px;
+}
+
+.browser-icon.browser-icon-chrome {
+	background-position : -32px 0;
+}
+
+.browser-icon.browser-icon-firefox {
+	background-position : -64px 0;
+}
+
+.browser-icon.browser-icon-opera {
+	background-position : -96px 0;
+}
+
+.browser-icon.browser-icon-safari {
+	background-position : -128px 0;
+}
+
+.browser-icon.browser-icon-ie {
+	background-position : -160px 0;
+}
+
+button[disabled] i {
+	background-image : url("/ui/_images/glyphicons-halflings-l-grey.png");
+}
+
+.statstable strong {
+	font-size   : 16px;
+	font-weight : bold;
+
+}
+
+.statstable small {
+
+	color : #BFBFBF;
+
+}
+
+#scroll-container {
+	padding : 0 15px 0 15px;
+}
+
+.jspScrollable #scroll-container {
+	padding : 0 0 0 15px;
+}

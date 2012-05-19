@@ -1,0 +1,1 @@
+/.sys/php-5.3/php /.sys/pdepend/bin/pdepend.php %* --jdepend-chart=/f3/dev/lib/metrics/depend.svg --overview-pyramid=/f3/dev/lib/metrics/overview.svg /f3/dev/lib

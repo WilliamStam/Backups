@@ -1,0 +1,87 @@
+// _changes.less
+
+.icon-grey, .icon-l-grey {
+	background-image : url("@{iconLGreySpritePath}");
+}
+.icon-d-grey {
+	background-image : url("@{iconDGreySpritePath}");
+}
+
+.modal-backdrop {
+	background-color : @white; // Fade for backdrop
+}
+
+.modal-backdrop,
+.modal-backdrop.fade.in {
+	.opacity(40);
+}
+
+.btn-group.square > .btn {
+	margin-top: -1px;
+}
+.btn-group.square > .btn:first-child {
+	margin-left                       : -1px;
+	-webkit-border-top-left-radius    : 0px;
+	-moz-border-radius-topleft        : 0px;
+	border-top-left-radius            : 0px;
+	-webkit-border-bottom-left-radius : 0px;
+	-moz-border-radius-bottomleft     : 0px;
+	border-bottom-left-radius         : 0px;
+}
+
+// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+.btn-group.square > .btn:last-child {
+	-webkit-border-top-right-radius    : 0px;
+	-moz-border-radius-topright        : 0px;
+	border-top-right-radius            : 0px;
+	-webkit-border-bottom-right-radius : 0px;
+	-moz-border-radius-bottomright     : 0px;
+	border-bottom-right-radius         : 0px;
+}
+
+// Reset corners for large buttons
+.btn-group.square > .btn.large:first-child {
+	margin-left                       : -1px;
+	-webkit-border-top-left-radius    : 0px;
+	-moz-border-radius-topleft        : 0px;
+	border-top-left-radius            : 0px;
+	-webkit-border-bottom-left-radius : 0px;
+	-moz-border-radius-bottomleft     : 0px;
+	border-bottom-left-radius         : 0px;
+}
+
+.btn-group > .btn.large:last-child {
+	-webkit-border-top-right-radius    : 0px;
+	-moz-border-radius-topright        : 0px;
+	border-top-right-radius            : 0px;
+	-webkit-border-bottom-right-radius : 0px;
+	-moz-border-radius-bottomright     : 0px;
+	border-bottom-right-radius         : 0px;
+}
+
+.dropdown-menu table {
+	margin: 0;
+	tr {
+
+		&:hover, &.active {
+			background-color : @dropdownLinkBackgroundHover;
+			td {
+				color           : @dropdownLinkColorHover;
+				text-decoration : none;
+				cursor: pointer;
+			}
+		}
+		td {
+			font-weight : normal;
+			line-height : 18px;
+			padding     : 3px 15px;
+		}
+
+	}
+}
+
+.input-prepend .add-on, .input-append .add-on {
+	&.btn {
+		text-shadow: none;
+	}
+}
