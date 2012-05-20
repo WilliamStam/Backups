@@ -18,7 +18,7 @@
 
 
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="/min/css.{{_v}}.css"/>
+	<link rel="stylesheet" type="text/css" href="/ui/_css/style.{{_v}}.css"/>
 
 
 	<script src="/ui/_js/libs/modernizr.{{_v}}.js"></script>
@@ -35,8 +35,106 @@
 
 </head>
 <body>
-{% if page['template'] %} {% include page['template'] %} {% endif %}
+<div class="navbar navbar-fixed-top" id="pageheader">
+	<div class="navbar-inner" style="">
+		<div class="container">
+			<div class="clearfix">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+				<a class="brand" href="/">Backups</a>
 
+				<div id="app-nav-bar">
+					<ul class="nav" id="app-nav">
+						<li class="divider-vertical"></li>
+						<li class="">
+							<a href="/ab/form" class="nav-icon-btn"><i class="icon-plus icon-d-grey"></i></a></li>
+						<li class="divider-vertical"></li>
+						<li class="dropdown  active ">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">Tasks</a>
+						</li>
+						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">Reports <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="icon-eye-open menu-icon"></i>Production View</a></li>
+							</ul>
+						</li>
+
+
+
+					</ul>
+					<ul class="nav pull-right">
+
+
+						<li class="divider-vertical"></li>
+						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle nav-icon-btn" href="javascript:" title="Settings" rel="tooltip" data-placement="bottom"><i class="icon-cog icon-d-grey"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="nav-header">AdBooker</li>
+								<li><a href="#">Accounts</a></li>
+								<li><a href="#">Categories</a></li>
+								<li><a href="#">Marketers</a></li>
+								<li><a href="#">Production</a></li>
+								<li><a href="#">Print Lists</a></li>
+								<li><a href="#">Load Report</a></li>
+								<li class="nav-header">System</li>
+								<li><a href="#"><i class="icon-calendar menu-icon"></i> Dates</a></li>
+								<li><a href="#"><i class="icon-user menu-icon"></i> Users</a></li>
+								<li><a href="#"><i class="icon-book menu-icon"></i> Publications</a></li>
+							</ul>
+						</li>
+						<li class="divider-vertical"></li>
+						<li style="margin-right: -10px;">
+							<a href="/logout" style="padding: 8px 3px 10px 10px;" rel="tooltip" title="Logout" data-placement="bottom"><img src="/ui/_images/logout.png" alt="Logout"></a>
+						</li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="clearfix"></div>
+</div>
+
+					{% if page['template'] %} {% include page['template'] %} {% endif %}
+
+<footer id="pagefooter">
+	<div class="container">
+		<div style="position: absolute; left:10px;">
+			<a href="#systemTimers-container" data-toggle="modal"><i class="icon-time icon-d-grey"></i></a>
+		</div>
+		<div class="clearfix">
+			<div class="row">
+				<div class="span1">a</div>
+				<div class="span1">b</div>
+				<div class="span1">c</div>
+				<div class="s" style="float: right;">
+					&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+
+</footer>
+
+<div id='systemTimers-container' class='modal hide fade'>
+	<div class='modal-header'><a href='#' class='close' data-dismiss="modal">&times;</a>
+
+		<h3>Debug</h3></div>
+	<div class='modal-body'>
+		<article>
+			<table id='systemTimers'>
+
+			</table>
+		</article>
+	</div>
+	<div class='modal-footer'>
+
+	</div>
+</div>
 
 <div id='systemTimers-container' class='modal hide fade'>
 	<div class='modal-header'><a href='#' class='close' data-dismiss="modal">&times;</a>
@@ -57,6 +155,7 @@
 
 
 <script src="/ui/_js/libs/jquery.{{_v}}.js"></script>
+<script src="/min/js.{{_v}}.js"></script>
 
 
 
@@ -65,10 +164,84 @@
 <script type="text/javascript">
 
 	var activityRequest = [];
-	var transSpeed = '{{ transSpeed |default:'400'}}';
+	var transSpeed = '400';
+
+
+	$(function () {
+		$("[rel=tooltip]").tooltip({
+			live:true
+		});
+
+		$("[rel=popover]").popover({
+			offset:5,
+			live:true
+		});
+
+		$(document).ajaxError(function (e, xhr, settings, exception) {
+			if (xhr.responseText) alert('error in: ' + settings.url + ' \n \n \n' + '\n' + xhr.responseText);
+		});
 
 
 
+	});
+	$(document).ready(function () {
+
+		$(document).on("click", ".modal .close-btn", function () {
+			var $this = $(this), $modal = $this.closest(".modal");
+			$modal.modal("hide");
+			//	$("#settings-modal").modal('hide');
+		});
+
+		$(document).on("show", ".modal", function () {
+			var $this = $(this);
+			var h = $(window).height();
+			var th = $(this).height();
+
+			mt = (th) / 2;
+			if (h < th) {
+				$this.css({
+					"margin-top":-(h / 2)
+				});
+
+			} else {
+				$this.css("margin-top", -mt);
+			}
+		});
+	});
+
+
+
+	var jScrollPaneOptions = {
+		showArrows:false,
+		maintainPosition:false
+	};
+	var jScrollPaneOptionsMP = {
+		showArrows:false,
+		maintainPosition:true
+	};
+
+	$(document).ajaxComplete(function (event, request, settings) {
+		var u = settings.url;
+		var d = $.parseJSON(request.responseText);
+
+		if (u == "/data/keepalive") {
+		} else {
+			updatetimerlist(d);
+		}
+
+	});
+	function updatetimerlist(d) {
+		//console.log(d);
+
+		var data = d['timer'];
+		var page = d['page'];
+
+		if (data) {
+			var th = '<tr class="heading"><td >' + page['page'] + '</td><td class="s g">' + page['time'] + '</td></tr>';
+			$("#systemTimers").prepend(th + $("#template-timers-tr").jqote(data, "*"));
+		}
+
+	}
 
 
 </script>

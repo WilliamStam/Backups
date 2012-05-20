@@ -1,0 +1,74 @@
+.nav-dropdown-li {
+	&:hover a {
+		background-color : #e3e3e3;
+		text-decoration  : none;
+		text-shadow      : 0 1px 0 rgba(255, 255, 255, 0.9);
+		color            : #005580;
+	}
+	&.active a {
+		background-color : #0088CC;
+		color            : #FFFFFF;
+		text-shadow      : 0 -1px 0 rgba(0, 0, 0, 0.2);
+	}
+}
+
+.nav-icon-btn {
+	padding-left  : 12px !important;
+	padding-right : 12px !important;
+}
+
+.nav-icon-btn:hover .icon-d-grey {
+	background-image : url(/ui/_images/glyphicons-halflings-l-grey.png) !important;
+}
+
+#pageheader {
+
+	.dropdown.open >a {
+		background-color : #404040; /* Old browsers */
+		border-radius    : 5px;
+	}
+	.active a .caret {
+		color            : #000;
+		border-top-color : #000;
+	}
+	.dropdown-menu, #maintoolbar .dropdown-menu {
+		background-color : lighten(#f5f5f5, 30%);
+	}
+	.navbar-inner {
+		border-radius : 0;
+	}
+	.menu-icon {
+		background-image : url(/ui/_images/glyphicons-halflings-l-grey.png) !important;
+		margin-right     : 5px;
+		margin-left      : -20px;
+
+	}
+	.pull-right .menu-icon {
+		margin-left : -3px;
+	}
+}
+
+
+
+#app-nav {
+	& > li.active > a {
+		color                   : #444;
+		text-shadow             : 0 0 0 #444;
+
+		.linear-gradient(#f5f5f5, #f5f5f5, 30%, 30%);
+		.box-shadow(0 -4px 3px #000);
+
+		border-top-left-radius  : 5px;
+		border-top-right-radius : 5px;
+
+		margin-top              : 3px;
+		margin-bottom           : -3px;
+
+	}
+	.dropdown-menu li a {
+		padding-left : 30px;
+	}
+}
+#app-nav-bar > ul > li .dropdown-menu li {
+	.nav-dropdown-li;
+}

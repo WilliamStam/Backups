@@ -1,0 +1,95 @@
+<section id="maintoolbar">
+	<div class="container">
+		<div class="toolbar clearfix  ">
+			<ul class="nav nav-pills pull-left">
+
+				<li>
+					<div class="btn-group" data-toggle="buttons-radio" id="list-highlight-btns">
+						<button class="btn span1 btn-mini active " style="width:80px; margin-left: 10px;" data-highlight="checked">
+							Files
+						</button>
+						<button class="btn span1 btn-mini  " style="width:80px;" data-highlight="material">MySQL
+						</button>
+					</div>
+				</li>
+				<li class="divider-vertical"></li>
+				<li>
+					<div class="btn-group" data-toggle="buttons-radio" id="list-filter-btns">
+						<button data-filter="*" class="btn  btn-mini active" style="width:40px;">
+							<i class="icon-asterisk"></i></button>
+						<button data-filter="1" class="btn  btn-mini " style="width:40px;"><i class="icon-ok"></i>
+						</button>
+						<button data-filter="0" class="btn  btn-mini " style="width:40px;"><i class="icon-remove"></i>
+						</button>
+					</div>
+				</li>
+				<li class="divider-vertical"></li>
+			</ul>
+			<div class="pull-right">
+				<ul class="nav nav-pills pull-left" id="provisional-stats-bar">
+
+
+				</ul>
+				<ul class="nav nav-pills pull-right ">
+					<li class="divider-vertical" style="margin-right: 0;"></li>
+					<li class="dropdown pull-right">
+						<a data-toggle="dropdown" class="dropdown-toggle c" href="javascript:" style="width:15px;"><i class="icon-wrench"></i></a>
+						<ul class="dropdown-menu" id="record-settings">
+							<li class="nav-header">Group By</li>
+							<li data-group-records-by="placing" class="active">
+								<a href="javascript:;" data-group="placing">Placing</a></li>
+							<li data-group-records-by="type" class=""><a href="javascript:;">Type</a></li>
+							<li data-group-records-by="colours" class=""><a href="javascript:;">Colours</a></li>
+							<li data-group-records-by="marketer" class=""><a href="javascript:;">Marketers</a></li>
+							<li data-group-records-by="columns" class=""><a href="javascript:;">Columns</a></li>
+							<li data-group-records-by="discountPercent" class=""><a href="javascript:;">Discount %</a>
+							</li>
+							<li data-group-records-by="accountStatus" class=""><a href="javascript:;">Account Status</a>
+							</li>
+							<li data-group-records-by="none" class=""><a href="javascript:;">No Ordering</a></li>
+							<li class="nav-header clearfix">Direction</li>
+							<li data-order-records-by="ASC" class="active" style="width: 50%; float:left;">
+								<a href="javascript:;"><i class="icon-chevron-up icon-grey"></i> ASC</a></li>
+							<li data-order-records-by="DESC" class=" " style="width: 50%; float:right;">
+								<a href="javascript:;"><i class="icon-chevron-down icon-grey"></i> DESC</a></li>
+							<li class="clearfix"></li>
+							<li class="divider"></li>
+							<li><a href="javascript:;" id="list-settings"><i class="icon-cog  icon-grey"></i>
+								Settings</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+
+		</div>
+		<div class="toolbar-end"></div>
+	</div>
+
+</section>
+
+<section role="main" id="pagecontent">
+
+	<div class="container">
+
+
+		<article id="whole-area" class="span16">
+			<div class="content">
+				<div class="scroll-pane">
+
+					<div data-heading="top" id="scroll-container">
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="loadingmask wide"></div>
+		</article>
+	</div>
+
+
+</section>
+
