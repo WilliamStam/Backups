@@ -31,7 +31,7 @@ require_once('inc/class.template.php');
 require_once('inc/class.email.php');
 require_once('inc/class.store.php');
 
-$version = '0.1.20';
+$version = '0.1';
 
 $app->set('version', $version);
 $app->set('v', preg_replace("/[^0-9]/","",$version));
@@ -55,16 +55,11 @@ $cfg = array(
 require_once('config.inc.php');
 
 
-$app->set('DB', new DB('mysql:host=localhost;dbname=' . $cfg['db']['database'], $cfg['db']['username'], $cfg['db']['password']));
+$app->set('DB', new DB('mysql:host=' . $cfg['db']['database'] . ';dbname=' . $cfg['db']['database'], $cfg['db']['username'], $cfg['db']['password']));
 $app->set("GOOGLE_ANALYTICS", $cfg['GOOGLE_ANALYTICS']);
 
 
-$version = '0.0.1';
-$version = date("YmdH");
-$minVersion = preg_replace("/[^0-9]/", "", $version);
 
-$app->set('version', $version);
-$app->set('v', $minVersion);
 
 ob_start();
 
@@ -75,8 +70,7 @@ $app->route('GET /min/js/@filename', 'general->js_min', 0);
 $app->route('GET /min/js*', 'general->js_min', 0);
 
 
-$app->route('GET|POST /', 'controllers\question->page');
-$app->route('GET|POST /admin', 'controllers\admin->page');
+$app->route('GET|POST /', 'controllers\tasks->page');
 
 $app->run();
 
