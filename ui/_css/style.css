@@ -738,5 +738,9 @@ button[disabled] i {
   right: 0;
   bottom: 40px;
   background-color: white;
-  border-top: 1px solid #cccccc;
+  border-top: 1px double #b4b4b4;
+}
+#detailspane h3 {
+  border-bottom: 1px solid #cccccc;
+  padding: 4px 0;
 }
