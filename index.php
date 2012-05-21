@@ -25,7 +25,9 @@ require_once('inc/class.timer.php');
 
 
 $app = require('lib/f3/base.php');
-require_once('lib/Haanga.php');
+//require_once('lib/Haanga.php');
+require_once('lib/Twig/Autoloader.php');
+Twig_Autoloader::register();
 require_once('inc/class.msg.php');
 require_once('inc/class.template.php');
 require_once('inc/class.email.php');

@@ -16,8 +16,19 @@ class template {
 		$this->vars['folder'] = $ui;
 
 
-		Haanga::Configure($this->config);
+
+
+
+		//Haanga::Configure($this->config);
 		$this->template = $template;
+
+
+
+
+
+
+
+
 
 	}
 
@@ -30,11 +41,9 @@ class template {
 	}
 
 
+
 	public function load() {
 
-		ob_start();
-		//ob_start("ob_gzhandler");
-		// all pages get these
 		$curPageFull = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		$curPage = explode("?", $curPageFull);
 		$_v = isset($_GET['v']) ? $_GET['v'] : F3::get('v');
@@ -58,7 +67,7 @@ class template {
 				$page['template_js'] = "";
 			}
 			if (file_exists('' . $this->vars['folder'] . '_css/' . $tfile . '.css')) {
-				$page['template_css'] = '/min/css_'.$_v.'?file=/' . $this->vars['folder'] . '_css/' . $tfile . '.css';
+				$page['template_css'] = '/min/css_' . $_v . '?file=/' . $this->vars['folder'] . '_css/' . $tfile . '.css';
 			} else {
 				$page['template_css'] = "";
 			}
@@ -72,27 +81,31 @@ class template {
 				$page['template_tmpl'] = "";
 			}
 			$this->vars['page'] = $page;
+			return $this->render_template();
 		} else {
-
+			return $this->render_string();
 		}
 
-
-		if (!isset($this->vars['_domain'])) $this->vars['_domain'] = F3::get('DOMAIN');
-
-
-		//echo $this->config['template_dir'];
-		Haanga::load($this->template, $this->vars);
-
-		$t = ob_get_contents();
-		ob_end_clean();
-
-
-		if (!isLocal()) {
-			$t = sanitize_output($t);
-		}
-		return ($t);
 
 	}
+	public function render_template(){
+		$loader = new Twig_Loader_Filesystem($this->config['template_dir']);
+		$twig = new Twig_Environment($loader, array(
+			'cache' => $this->config['cache_dir'],
+		));
+
+
+		return $twig->render($this->template, $this->vars);
+
+
+	}
+	public function render_string(){
+		$loader = new Twig_Loader_String();
+		$twig = new Twig_Environment($loader);
+		return $twig->render($this->vars['template'], $this->vars);
+	}
+
+
 	public function output(){
 		F3::set("__runTemplate", true);
 		//ob_start();
