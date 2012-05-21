@@ -737,7 +737,7 @@ button[disabled] i {
   left: 0;
   right: 0;
   bottom: 40px;
-  border-top: 1px double #b4b4b4;
+  border-top: 1px double #cccccc;
   height: 250px;
 }
 #detailspane h4 {
