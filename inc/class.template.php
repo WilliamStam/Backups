@@ -91,7 +91,7 @@ class template {
 	public function render_template(){
 		$loader = new Twig_Loader_Filesystem($this->config['template_dir']);
 		$twig = new Twig_Environment($loader, array(
-			'cache' => $this->config['cache_dir'],
+			//'cache' => $this->config['cache_dir'],
 		));
 
 

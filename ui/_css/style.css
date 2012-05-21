@@ -737,10 +737,32 @@ button[disabled] i {
   left: 0;
   right: 0;
   bottom: 40px;
-  background-color: white;
   border-top: 1px double #b4b4b4;
+  height: 250px;
 }
-#detailspane h3 {
-  border-bottom: 1px solid #cccccc;
-  padding: 4px 0;
+#detailspane h4 {
+  padding: 10px 10px 6px 10px;
+  background-color: #eeeeee;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(top, whitesmoke 30%, #eeeeee 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(30%, whitesmoke), color-stop(100%, #eeeeee));
+  background-image: -webkit-linear-gradient(top, whitesmoke 30%, #eeeeee 100%);
+  background-image: -ms-linear-gradient(top, whitesmoke 30%, #eeeeee 100%);
+  background-image: -o-linear-gradient(top, whitesmoke 30%, #eeeeee 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=whitesmoke, endColorstr=#eeeeee, GradientType=0);
+  background-image: linear-gradient(top, whitesmoke 30%, #eeeeee 100%);
+  font-size: 12px;
+}
+.fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.scroll-container {
+  padding: 0 15px 0 15px;
+}
+.jspScrollable .scroll-container {
+  padding: 0 0 0 15px;
 }
